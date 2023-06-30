@@ -1,0 +1,21 @@
+body.admin-bar {
+	#header.fixed-top {
+		top: var(--wp-admin--admin-bar--height);
+	}
+}
+
+#header {
+	.search-form {
+		min-width: 250px;
+	}
+}
+
+.navbar-brand {
+	img {
+		height: 40px;
+	}
+}
+
+.navbar-static-top {
+	margin-bottom: $grid-gutter-width;
+}

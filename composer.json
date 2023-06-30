@@ -1,0 +1,22 @@
+{
+    "name": "hykes/bs-theme",
+    "description": "A Wordpress starter theme with Bootstrap 5.*",
+    "autoload": {
+        "psr-4": {
+            "MyTheme\\": "src/"
+        }
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "wptrt/wpthemereview": "^0.2.1"
+    },
+    "scripts": {
+        "php:lint": "phpcs",
+        "php:fix": "phpcbf"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

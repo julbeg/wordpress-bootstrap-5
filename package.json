@@ -1,0 +1,38 @@
+{
+  "name": "bs-theme",
+  "version": "1.0.0",
+  "license": "GPL-2.0",
+  "description": "A WordPress Starter Theme built with Bootstrap 5",
+  "author": "Jules Begouen",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/julbeg/bs-theme.git"
+  },
+  "browserslist": "last 4 versions",
+  "scripts": {
+    "install-bs": "cp ./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js ./assets/js/bootstrap.js",
+    "css:watch": "sass --source-map ./assets/src/sass/:./assets/css/ -w",
+    "css:build": "npm run css:compile && npm run css:prefix && npm run css:minify",
+    "css:compile": "sass --no-source-map ./assets/src/sass/:./assets/css/",
+    "css:prefix": "postcss ./assets/css/*.css --use autoprefixer -d ./assets/css --no-map",
+    "css:minify": "cleancss --output ./assets/css/ --batch --batch-suffix \"\" ./assets/css/*.css  \"!./assets/css/*.min.css\"",
+    "js:build": "rollup --config ./assets/rollup.config.js",
+    "js:watch": "npm run js:build -- --watch",
+    "js:lint": "eslint assets/src/js",
+		"js:fix": "eslint assets/src/js --fix"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.0",
+    "@wordpress/eslint-plugin": "^14.8.0",
+    "autoprefixer": "^10.4.14",
+    "clean-css-cli": "^5.6.2",
+    "eslint": "^8.43.0",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "rollup": "^3.19.1",
+    "sass": "^1.63.6"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.0"
+  }
+}

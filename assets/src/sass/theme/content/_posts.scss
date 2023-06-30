@@ -1,0 +1,22 @@
+/*
+Posts styles
+*/
+
+.card {
+	.card {
+		background-color: $gray-100;
+	}
+}
+
+.entry-meta {
+	font-size: small;
+	margin-top: ($grid-gutter-width * 0.5);
+}
+
+.single {
+	.entry-content,
+	.post-navigation,
+	#comments-title {
+		margin: $grid-gutter-width 0;
+	}
+}

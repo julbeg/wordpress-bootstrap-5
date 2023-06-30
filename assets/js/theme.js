@@ -1,0 +1,1 @@
+!function(){"use strict";[].forEach.call(document.querySelectorAll(".search-form"),(e=>{e.addEventListener("submit",(function(t){var r=e.querySelector("input");r.value.length<1&&(t.preventDefault(),r.focus())}))})),[].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]')).map((function(e){return new bootstrap.Popover(e,{trigger:"focus"})}))}();

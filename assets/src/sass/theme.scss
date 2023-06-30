@@ -1,0 +1,18 @@
+/*
+Styles for front-end
+*/
+
+// Import theme variables
+@import "variables";
+
+// Import Boostrap
+@import "bootstrap";
+
+// Impor shared styles
+@import "shared";
+
+// Import theme styles
+@import "theme/";
+
+// Import Plugins customizations
+@import "plugins";

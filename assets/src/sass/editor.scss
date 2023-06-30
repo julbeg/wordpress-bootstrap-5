@@ -1,0 +1,15 @@
+/*
+Styles for Gutenberg content editor
+*/
+
+// Import theme variables
+@import "variables";
+
+// Import Boostrap
+@import "bootstrap";
+
+// Impor shared styles
+@import "shared";
+
+// Import editor styles
+@import "editor/";

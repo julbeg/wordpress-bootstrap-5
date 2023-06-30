@@ -1,0 +1,13 @@
+body {
+	overflow-x: hidden;
+
+	&.page-template-page-full {
+		#main {
+			max-width: 100%;
+		}
+	}
+}
+
+#main {
+	// margin-top: $spacer;
+}

@@ -1,0 +1,97 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "color": {
+            "custom": true,
+			"defaultPalette": false,
+            "defaultGradients": false,
+            "customDuotone": false,
+            "duotone": [],
+            "palette": [
+                {
+                    "name": "Primary",
+                    "slug": "primary",
+                    "color": "#0d6efd"
+                },
+                {
+                    "name": "Secondary",
+                    "slug": "secondary",
+                    "color": "#6c757d"
+                },
+                {
+                    "name": "Success",
+                    "slug": "success",
+                    "color": "#198754"
+                },
+                {
+                    "name": "Info",
+                    "slug": "info",
+                    "color": "#0dcaf0"
+                },
+                {
+                    "name": "Warning",
+                    "slug": "warning",
+                    "color": "#ffc107"
+                },
+                {
+                    "name": "Danger",
+                    "slug": "danger",
+                    "color": "#dc3545"
+                },
+                {
+                    "name": "Light",
+                    "slug": "light",
+                    "color": "#f8f9fa"
+                },
+                {
+                    "name": "Dark",
+                    "slug": "dark",
+                    "color": "#212529"
+                }
+            ]
+        },
+        "typography": {
+            "customFontSize": true,
+            "lineHeight": true,
+            "fontSizes": [
+				{
+					"slug": "small",
+					"size": "14px",
+					"name": "Petit"
+				},
+				{
+					"slug": "medium",
+					"size": "20px",
+					"name": "Moyen"
+				},
+				{
+					"slug": "large",
+					"size": "24px",
+					"name": "Large"
+				},
+				{
+					"slug": "x-large",
+					"size": "32px",
+					"name": "Extra large"
+				}
+            ]
+        },
+        "spacing": {
+			"padding": true,
+			"margin": true,
+			"units": [
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw"
+			]
+		},
+        "layout": {
+            "contentSize": "1140px",
+            "wideSize": "1320px"
+        }
+    }
+}

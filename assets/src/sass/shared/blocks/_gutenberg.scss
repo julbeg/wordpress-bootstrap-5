@@ -1,0 +1,147 @@
+// Buttons
+
+// Override blocks style
+.wp-block-buttons .wp-block-button .wp-block-button__link {
+	@extend .btn;
+}
+
+.wp-block-button {
+	&.is-style-fill, &:not([class*="is-style-"]) {
+		> .wp-block-button__link {
+			&:not(.has-background),
+			&.has-primary-background-color {
+				@extend .btn-primary;
+			}
+			&.has-secondary-background-color {
+				@extend .btn-secondary;
+			}
+			&.has-success-background-color {
+				@extend .btn-success;
+			}
+			&.has-info-background-color {
+				@extend .btn-info;
+			}
+			&.has-warning-background-color {
+				@extend .btn-warning;
+			}
+			&.has-danger-background-color {
+				@extend .btn-danger;
+			}
+			&.has-light-background-color {
+				@extend .btn-light;
+			}
+			&.has-dark-background-color {
+				@extend .btn-dark;
+			}
+
+			&.has-primary-background-color,
+			&.has-secondary-background-color,
+			&.has-success-background-color,
+			&.has-info-background-color,
+			&.has-warning-background-color,
+			&.has-light-background-color,
+			&.has-dark-background-color {
+				background-color: var(--bs-btn-bg)!important;
+				&:hover,
+				&:focus-visible {
+					background-color: var(--bs-btn-hover-bg)!important;
+				}
+				&:active {
+					background-color: var(--bs-btn-active-bg)!important;
+				}
+			}
+		}
+	}
+
+	&.is-style-outline {
+		> .wp-block-button__link {
+			&.has-background {
+				background-color: var(--bs-btn-bg)!important;
+				color: var(--bs-btn-color)!important;
+			}
+			&:not(.has-background),
+			&.has-primary-background-color {
+				@extend .btn-outline-primary;
+			}
+			&.has-secondary-background-color {
+				@extend .btn-outline-secondary;
+			}
+			&.has-success-background-color {
+				@extend .btn-outline-success;
+			}
+			&.has-info-background-color {
+				@extend .btn-outline-info;
+			}
+			&.has-warning-background-color {
+				@extend .btn-outline-warning;
+			}
+			&.has-danger-background-color {
+				@extend .btn-outline-danger;
+			}
+			&.has-light-background-color {
+				@extend .btn-outline-light;
+			}
+			&.has-dark-background-color {
+				@extend .btn-outline-dark;
+			}
+
+			&.has-primary-background-color,
+			&.has-secondary-background-color,
+			&.has-success-background-color,
+			&.has-info-background-color,
+			&.has-warning-background-color,
+			&.has-danger-background-color,
+			&.has-light-background-color,
+			&.has-dark-background-color {
+				background-color: var(--bs-btn-bg)!important;
+				color: var(--bs-btn-color);
+				&:hover {
+					color: var(--bs-btn-hover-color);
+					background-color: var(--bs-btn-hover-bg)!important;
+					border-color: var(--bs-btn-hover-border-color);
+				}
+				&:focus-visible {
+					color: var(--bs-btn-hover-color);
+					background-color: var(--bs-btn-hover-bg)!important;
+					border-color: var(--bs-btn-hover-border-color);
+					outline: 0;
+					box-shadow: var(--bs-btn-focus-box-shadow);
+				}
+				&:active {
+					color: var(--bs-btn-active-color);
+					background-color: var(--bs-btn-active-bg);
+					border-color: var(--bs-btn-active-border-color);
+				}
+			}
+		}
+	}
+}
+
+// Table
+.wp-block-table {
+	td,
+	th {
+		border: inherit;
+	}
+
+	table {
+		@extend .table;
+	}
+}
+
+// Block Quotes
+.wp-block-quote {
+	@extend .blockquote;
+	cite {
+		@extend .blockquote-footer;
+	}
+}
+
+// Image, Media and Text
+.wp-block-image,
+.wp-block-media-text__media {
+	img,
+	video {
+		height: auto;
+	}
+}

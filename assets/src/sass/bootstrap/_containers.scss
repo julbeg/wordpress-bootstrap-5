@@ -1,0 +1,7 @@
+// Create fluid containers for each breakpoints
+@each $breakpoint, $container-max-width in $container-max-widths {
+	.container-fluid-#{$breakpoint} {
+		@include make-container();
+		max-width: $container-max-width!important;
+	}
+}
