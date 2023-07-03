@@ -141,7 +141,7 @@ function bootstrap_nav( $args ) {
 		'container'  => false,
 		'type'       => 'nav',
 		'nav_style'  => '',
-		'menu_class' => '',
+		'menu_class' => 'menu',
 	);
 
 	$args = wp_parse_args( $args, $defaults );

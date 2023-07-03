@@ -53,7 +53,7 @@ class Bootstrap {
 		// If no theme_location probably a widget
 		if ( empty( $args['walker'] ) && empty( $args['theme_location'] ) ) {
 			$args['walker']     = new Bootstrap_Walker_Nav_Menu();
-			$args['menu_class'] = 'nav flex-column';
+			$args['menu_class'] = 'nav flex-column menu';
 		}
 
 		return $args;
