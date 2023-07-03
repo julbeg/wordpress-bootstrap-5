@@ -57,7 +57,7 @@
 		> .wp-block-button__link {
 			&.has-background {
 				background-color: var(--bs-btn-bg)!important;
-				color: var(--bs-btn-color)!important;
+				color: var(--bs-btn-color);
 			}
 			&:not(.has-background),
 			&.has-primary-background-color {
