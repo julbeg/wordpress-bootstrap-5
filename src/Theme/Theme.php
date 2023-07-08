@@ -33,8 +33,8 @@ class Theme {
 	private function __construct() {
 		$this->load_theme_functions();
 
-		$this->load( Security::class );
-		$this->load( Admin::class );
+		$this->load( Security::class, false );
+		$this->load( Admin::class, false );
 
 		// Admin::init();
 
@@ -70,11 +70,13 @@ class Theme {
 	public function load( string $class, string $short_name = '' ) :mixed {
 		$module = new $class;
 
-		if ( ! $short_name ) {
-			$short_name = strtolower( ( new \ReflectionClass( $class ) )->getShortName() );
-		}
+		if ( false !== $short_name ) {
+			if ( ! $short_name ) {
+				$short_name = strtolower( ( new \ReflectionClass( $class ) )->getShortName() );
+			}
 
-		$this->modules[ $short_name ] = $module;
+			$this->modules[ $short_name ] = $module;
+		}
 
 		return $module;
 	}
