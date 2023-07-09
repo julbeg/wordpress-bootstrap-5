@@ -33,10 +33,8 @@ class Theme {
 	private function __construct() {
 		$this->load_theme_functions();
 
-		$this->load( Security::class, false );
-		$this->load( Admin::class, false );
-
-		// Admin::init();
+		$this->load( Security::class, 'security' );
+		$this->load( Admin::class, 'admin' );
 
 		$this->add_theme_styles_and_scripts();
 
@@ -67,7 +65,7 @@ class Theme {
 	/**
 	 * Load a new module
 	 */
-	public function load( string $class, string $short_name = '' ) :mixed {
+	public function load( string $class, string|false $short_name = '' ) :mixed {
 		$module = new $class;
 
 		if ( false !== $short_name ) {

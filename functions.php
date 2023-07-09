@@ -20,4 +20,6 @@ $theme->add_widget( 'Primary Widget Area (Sidebar)', 'primary_widget_area' );
 $theme->add_widget( 'Secondary Widget Area (Header Navigation)', 'secondary_widget_area' );
 $theme->add_widget( 'Third Widget Area (Footer)', 'third_widget_area' );
 
+// $theme->admin->disable_autosave();
+
 Bootstrap::init();

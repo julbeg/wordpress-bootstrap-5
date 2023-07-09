@@ -43,4 +43,17 @@ class Admin {
 		add_theme_support( 'editor-styles' );
 		add_editor_style( 'assets/css/editor.css' );
 	}
+
+	/**
+	 * Disable posts auto saving
+	 */
+	public function disable_autosave() :void {
+		add_action(
+			'admin_init',
+			function () {
+				wp_deregister_script( 'autosave' );
+			}
+		);
+	}
+
 }
