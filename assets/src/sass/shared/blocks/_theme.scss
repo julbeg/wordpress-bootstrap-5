@@ -1,1 +1,9 @@
 // Your custom styles here
+
+.wp-block-image {
+	&.is-style-fill-width {
+		img {
+			width: 100%;
+		}
+	}
+}

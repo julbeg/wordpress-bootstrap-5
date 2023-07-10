@@ -20,6 +20,16 @@ $theme->add_widget( 'Primary Widget Area (Sidebar)', 'primary_widget_area' );
 $theme->add_widget( 'Secondary Widget Area (Header Navigation)', 'secondary_widget_area' );
 $theme->add_widget( 'Third Widget Area (Footer)', 'third_widget_area' );
 
+// Add style to bootstrap's image block
+$theme->add_block_style(
+	'core/image',
+	array(
+		'name'  => 'fill-width',
+		'label' => __('Fill width', 'my-theme'),
+	)
+);
+
+
 // $theme->admin->disable_autosave();
 
 Bootstrap::init();
