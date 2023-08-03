@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace MyTheme\Theme;
 
+use WP_Admin_Bar;
+
 class Theme {
 	/**
 	 * The current globally available container (if any).
@@ -318,6 +320,40 @@ class Theme {
 				add_theme_support( 'responsive-embeds' );
 			}
 		);
+	}
+
+	/**
+	 * Hide default 'post' type
+	 * Keep the post type registered for compatibility
+	 */
+	public function remove_posts() :self {
+		add_action(
+			'admin_menu',
+			function() {
+				remove_menu_page( 'edit.php' );
+			}
+		);
+
+		add_action(
+			'admin_bar_menu',
+			function( WP_Admin_Bar $wp_admin_bar ) {
+				$wp_admin_bar->remove_node( 'new-post' );
+			},
+			999
+		);
+
+		add_action(
+			'load-post-new.php',
+			function() {
+				global $typenow;
+				if ( 'post' === $typenow ) {
+					wp_redirect( admin_url() );
+					exit;
+				}
+			}
+		);
+
+		return $this;
 	}
 
 	/**
