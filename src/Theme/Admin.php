@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace MyTheme\Theme;
 
+use WP_Admin_Bar;
+
 class Admin {
 
 	public function __construct() {
 		add_action( 'login_enqueue_scripts', array( __CLASS__, 'login_enqueue_scripts' ) );
 		add_filter( 'login_headerurl', array( __CLASS__, 'login_headerurl' ) );
+		add_action( 'admin_bar_menu', array( __CLASS__, 'remove_admin_bar_wp_logo' ) );
 
 		add_action( 'admin_init', array( __CLASS__, 'editor_styles' ) );
 	}
@@ -34,6 +37,13 @@ class Admin {
 	 */
 	public static function login_headerurl() {
 		return home_url();
+	}
+
+	/**
+	 * Remove the WP logo from admin bar
+	 */
+	public static function remove_admin_bar_wp_logo( WP_Admin_Bar $wp_admin_bar ) :void {
+		$wp_admin_bar->remove_menu( 'wp-logo' );
 	}
 
 	/**

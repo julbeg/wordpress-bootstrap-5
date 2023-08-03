@@ -378,15 +378,11 @@ class Theme {
 		);
 
 		add_action(
-			'wp_before_admin_bar_render',
-			function() {
-				global $wp_admin_bar;
-
-				$wp_admin_bar->remove_node( 'new-link' );
-				$wp_admin_bar->remove_node( 'new-media' );
-				$wp_admin_bar->remove_menu( 'wp-logo' );
+			'admin_bar_menu',
+			function( WP_Admin_Bar $wp_admin_bar ) {
 				$wp_admin_bar->remove_menu( 'comments' );
-			}
+			},
+			999
 		);
 
 		return $this;
