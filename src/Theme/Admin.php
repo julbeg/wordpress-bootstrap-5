@@ -11,7 +11,7 @@ class Admin {
 	public function __construct() {
 		add_action( 'login_enqueue_scripts', array( __CLASS__, 'login_enqueue_scripts' ) );
 		add_filter( 'login_headerurl', array( __CLASS__, 'login_headerurl' ) );
-		add_action( 'admin_bar_menu', array( __CLASS__, 'remove_admin_bar_wp_logo' ) );
+		add_action( 'admin_bar_menu', array( __CLASS__, 'remove_admin_bar_wp_logo' ), 100 );
 
 		add_action( 'admin_init', array( __CLASS__, 'editor_styles' ) );
 	}
