@@ -84,14 +84,23 @@ class Theme {
 	/**
 	 * Enqueue style with version based on filemtime
 	 */
-	public static function add_style( string $handle, string $src = '', array $deps = array(), bool $enqueue = true ) :void {
-		$file     = get_template_directory() . $src;
-		$file_uri = get_template_directory_uri() . $src;
-		$version  = filemtime( $file );
-		wp_register_style( $handle, $file_uri, $deps, $version );
-		if ( $enqueue ) {
-			wp_enqueue_style( $handle );
+	public static function add_style( string $handle, string $src = '', array $deps = array(), ?string $version = null, bool $enqueue = true ) :void {
+		if(!filter_var($src, FILTER_VALIDATE_URL)) {
+			if(!$version) {
+				$version  = filemtime( get_template_directory() . $src );
+			}
+			$src = get_template_directory_uri() . $src;
 		}
+
+		add_action(
+			'wp_enqueue_scripts',
+			function() use($handle, $src, $deps, $version, $enqueue) {
+				wp_register_style( $handle, $src, $deps, $version );
+				if ( $enqueue ) {
+					wp_enqueue_style( $handle );
+				}
+			}
+		);
 	}
 
 	/**
@@ -108,14 +117,23 @@ class Theme {
 	/**
 	 * Enqueue scripts with version based on filemtime
 	 */
-	public static function add_script( string $handle, string $src = '', array $deps = array(), bool $in_footer = true, bool $enqueue = true ) :void {
-		$file     = get_template_directory() . $src;
-		$file_uri = get_template_directory_uri() . $src;
-		$version  = filemtime( $file );
-		wp_register_script( $handle, $file_uri, $deps, $version, $in_footer );
-		if ( $enqueue ) {
-			wp_enqueue_script( $handle );
+	public static function add_script( string $handle, string $src = '', array $deps = array(), ?string $version = null, bool $in_footer = true, bool $enqueue = true ) :void {
+		if(!filter_var($src, FILTER_VALIDATE_URL)) {
+			if(!$version) {
+				$version  = filemtime( get_template_directory() . $src );
+			}
+			$src = get_template_directory_uri() . $src;
 		}
+
+		add_action(
+			'wp_enqueue_scripts',
+			function() use($handle, $src, $deps, $version, $enqueue, $in_footer) {
+				wp_register_script( $handle, $src, $deps, $version, $in_footer );
+				if ( $enqueue ) {
+					wp_enqueue_script( $handle );
+				}
+			}
+		);
 	}
 
 
@@ -261,12 +279,12 @@ class Theme {
 	 * Enqueue scripts and styles.
 	 */
 	private function add_theme_styles_and_scripts() :self {
+		self::add_style( 'my-theme', '/assets/css/theme.css' );
+		self::add_script( 'my-theme', '/assets/js/theme.js' );
+		
 		add_action(
 			'wp_enqueue_scripts',
 			function() {
-				self::add_style( 'my-theme', '/assets/css/theme.css' );
-				self::add_script( 'my-theme', '/assets/js/theme.js' );
-
 				if ( $this->comments_support && is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 					wp_enqueue_script( 'comment-reply' );
 				}
