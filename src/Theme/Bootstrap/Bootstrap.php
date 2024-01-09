@@ -11,7 +11,7 @@ class Bootstrap {
 	public static function init() :void {
 		self::load_theme_functions();
 
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_script' ) );
+		self::add_script();
 
 		add_filter( 'use_default_gallery_style', array( __CLASS__, '__return_false' ) );
 
