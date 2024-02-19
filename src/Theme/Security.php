@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MyTheme\Theme;
+namespace LTJ\Theme;
 
 use WP_Sitemaps_Provider;
 
@@ -14,6 +14,9 @@ class Security {
 		//Remove users from sitemap
 		add_filter( 'wp_sitemaps_add_provider', array( __CLASS__, 'remove_sitemap_users' ), 10, 2 );
 
+		// Remove users from rest API
+		add_action( 'rest_authentication_errors', array( __CLASS__, 'remove_api_users' ) );
+
 		// Disable attachments comments
 		add_filter( 'comments_open', array( __CLASS__, 'filter_media_comment_status' ), 10, 2 );
 	}
@@ -22,9 +25,12 @@ class Security {
 	 * Disable author pages for security
 	 */
 	public static function disable_author_page() :void {
-		if ( is_author() ) {
-			wp_redirect( get_option( 'home' ), 301 );
-			exit;
+		global $wp_query;
+
+		if ( is_author() || isset( $_GET['author'] ) ) {
+			$wp_query->set_404();
+			status_header( 404 );
+			nocache_headers();
 		}
 	}
 
@@ -37,6 +43,26 @@ class Security {
 		}
 
 		return $provider;
+	}
+
+	public static function remove_api_users( $access ) {
+		if ( is_user_logged_in() ) {
+			return $access;
+		}
+
+		if ( ( preg_match( '/users/i', $_SERVER['REQUEST_URI'] ) !== 0 )
+			|| ( isset( $_REQUEST['rest_route'] ) && ( preg_match( '/users/i', $_REQUEST['rest_route'] ) !== 0 ) )
+		) {
+			return new \WP_Error(
+				'rest_cannot_access',
+				'Only authenticated users can access the User endpoint REST API.',
+				array(
+					'status' => rest_authorization_required_code(),
+				)
+			);
+		}
+
+		return $access;
 	}
 
 	/**
